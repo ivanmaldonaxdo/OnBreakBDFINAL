@@ -1,0 +1,65 @@
+﻿<Controls:MetroWindow x:Class="OnBreakWPF.ListadoContratos"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:OnBreakWPF"
+        xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+        xmlns:behaviours="clr-namespace:MahApps.Metro.Behaviours;assembly=MahApps.Metro"
+        xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+        WindowStartupLocation="CenterScreen"
+        mc:Ignorable="d"
+        Title="ListadoContratos" Height="677" Width="1100">
+    <Grid >
+        <!--Filtro de busqueda-->
+        <Label x:Name="lblTitulo" Content="Listado de Contratos" HorizontalAlignment="Left" Margin="378,10,0,0" VerticalAlignment="Top" FontSize="36"/>
+        <Border x:Name="brFIltrobusqueda" BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="64" VerticalAlignment="Top" Width="744" Margin="164,82,0,0" Background="#FFCCCCCC"/>
+        <Label x:Name="lblNumcontrato" Content="N° Contrato*" HorizontalAlignment="Left" Margin="170,102,0,0" VerticalAlignment="Top" FontSize="18" Width="160" Height="34"/>
+        <TextBox x:Name="txtNumcontrato" Controls:TextBoxHelper.ClearTextButton="True" HorizontalAlignment="Left" Height="29" Margin="284,105,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="137" FontSize="16"/>
+        <Label x:Name="lblTpoevent" Content="Tipo de Evento*" HorizontalAlignment="Left" Margin="627,103,0,0" VerticalAlignment="Top" FontSize="16" RenderTransformOrigin="0.231,0.123" Height="32"/>
+        <ComboBox x:Name="cboTipoevent" HorizontalAlignment="Left" Margin="751,104,0,0" VerticalAlignment="Top" Width="139" FontSize="18" SelectionChanged="cboTipoevent_SelectionChanged" Height="30" Controls:TextBoxHelper.Watermark="Seleccione"/>
+        <Label x:Name="lblRut" Content="Rut*" HorizontalAlignment="Left" Margin="457,103,0,0" VerticalAlignment="Top" FontSize="18" Width="160" Height="33"/>
+        <TextBox x:Name="txtRut" Controls:TextBoxHelper.ClearTextButton="True" HorizontalAlignment="Left" Height="29" Margin="503,105,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="112" FontSize="16"/>
+
+        <!--DataGrid-->
+        <Border x:Name="brDark" BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="298" Margin="20,197,0,0" VerticalAlignment="Top" Width="1050" Background="#FF2B78E4" Visibility="Collapsed"/>
+        <DataGrid x:Name="dtgContrato" HorizontalAlignment="Left" Height="274" Margin="30,209,0,0" VerticalAlignment="Top" Width="1028" AutoGenerateColumns="False" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" SelectedItem="{Binding Path=Numero}">
+            <DataGrid.Columns>
+                <DataGridTextColumn Binding="{Binding Path=Numero}" Header="    Número&#xA;  Contrato" Width="100"/>
+                <DataGridTextColumn Binding="{Binding Path=Creacion}" Header="    Creación" Width="109"/>
+                <DataGridTextColumn Binding="{Binding Path=Termino}" Header="    Término" Width="109"/>
+                <DataGridTextColumn Binding="{Binding Path=FechaHoraInicio}" Header="Fecha-hora&#xA;   de inicio" Width="99"/>
+                <DataGridTextColumn Binding="{Binding Path=FechaHoraTermino}" Header="Fecha-hora&#xA; de término" Width="99"/>
+                <!--<DataGridTextColumn Binding="{Binding Path=Realizado}" Header="   Está&#xA;vigente" Width="70"/>-->
+                <DataGridCheckBoxColumn  Binding="{Binding Path=Realizado}" Header="   Está&#xA;vigente" Width="70" IsThreeState="True"/>
+                <DataGridTextColumn Binding="{Binding Path=RutCliente}" Header="      Rut&#xA;   cliente" Width="84"/>
+                <DataGridTextColumn Binding="{Binding Path=DescTipoEvento}" Header="Tipo de Evento" Width="114"/>
+                <DataGridTextColumn Binding="{Binding Path=DescModalidad}" Header="Modalidad" Width="110"/>
+                <DataGridTextColumn Binding="{Binding Path=Observaciones}" Header="     Observación" Width="181"/>
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="275" Margin="29,208,0,0" VerticalAlignment="Top" Width="1030"/>
+
+
+
+        <!--Ventana Anterior-->
+        <Controls:Tile x:Name="btnBack" Margin="15,0,0,15" Height="55" VerticalContentAlignment="Top" VerticalAlignment="Bottom" HorizontalAlignment="Left" HorizontalContentAlignment="Left" Title="Ventana&#xA;Anterior" TitleFontSize="15" VerticalTitleAlignment="Center" HorizontalTitleAlignment="Right" Width="115" Background="#FF38761D" Click="btnBack_Click">
+            <Image Source="/Imagenes/Back.png" />
+        </Controls:Tile>
+        <!--Boton menu Principal-->
+        <Controls:Tile x:Name="btnMenu" Margin="15,0,0,15" Height="55" VerticalContentAlignment="Top" VerticalAlignment="Bottom" HorizontalAlignment="Left" HorizontalContentAlignment="Left" Title="Menú&#xA;Principal" TitleFontSize="15" VerticalTitleAlignment="Center" HorizontalTitleAlignment="Right" Width="115" Background="#FF38761D" Click="btnMenu_Click">
+            <Image Source="/Imagenes/Back.png" />
+        </Controls:Tile>
+        <!--Seleccionar Cliente-->
+        <Controls:Tile x:Name="btnSelect" Margin="730,527,228,64" Height="Auto" VerticalContentAlignment="Center" HorizontalContentAlignment="Left" TitleFontSize="15" Title="Seleccionar&#xA;Contrato" HorizontalTitleAlignment="Right" VerticalTitleAlignment="Center" Width="Auto" Background="#FF085394" Visibility="Collapsed" Click="btnSelect_Click">
+            <Image Source="/Imagenes/Select_row.png" />
+        </Controls:Tile>
+        <Image Source="Imagenes/logo_transparent_background.png" Width="152" Height="152" Margin="940,494,0,0" RenderTransformOrigin="0.763,0.796"/>
+        <Button x:Name="btnLimpiar" Content="Limpiar Controles" Margin="643,158,315,458" Style="{DynamicResource SquareButtonStyle}" Click="btnLimpiar_Click" />
+        <Button x:Name="btnBuscar" Content="buscar" Margin="474,156,547,456" Style="{DynamicResource SquareButtonStyle}" FontSize="16" Click="btnBuscar_Click" />
+        <Controls:ToggleSwitch x:Name="swDarkTheme"  OnLabel=" " OffLabel="" Margin="1007,-16,0,601" FontSize="24" Content="" VerticalContentAlignment="Bottom" Header="" Width="72" VerticalAlignment="Bottom" HorizontalAlignment="Left" Height="61" ContentDirection="RightToLeft" OnSwitchBrush="#FF085394"   Checked="swDarkTheme_Checked" IsCheckedChanged="swDarkTheme_IsCheckedChanged" />
+        <Label x:Name="lblSwitch" Content=" Switch&#xA;Off | On" HorizontalAlignment="Left" Margin="1007,37,0,0" VerticalAlignment="Top" FontSize="18" Width="72"/>
+
+    </Grid>
+</Controls:MetroWindow>

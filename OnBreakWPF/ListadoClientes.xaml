@@ -1,0 +1,62 @@
+﻿<Controls:MetroWindow x:Class="OnBreakWPF.ListadoClientes"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:OnBreakWPF"
+        xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+        xmlns:behaviours="clr-namespace:MahApps.Metro.Behaviours;assembly=MahApps.Metro"
+        xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"         
+        mc:Ignorable="d"
+        WindowStartupLocation="CenterScreen"              
+        Title="Listado de Clientes" Height="677" Width="1040">
+    <Grid>
+        <!--Filtro de busqueda-->
+        <Label x:Name="lblTitulo" Content="Listado de Clientes" HorizontalAlignment="Left" Margin="346,10,0,0" VerticalAlignment="Top" FontSize="36"/>
+        <Border x:Name="brFIltrobusqueda" BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="64" VerticalAlignment="Top" Width="779" Margin="144,82,0,0" Background="#FFCCCCCC"/>
+        <Label x:Name="lblRut" Content="Rut*" HorizontalAlignment="Left" Margin="163,102,0,0" VerticalAlignment="Top" FontSize="18" Width="160" Height="32"/>
+        <TextBox x:Name="txtRut" Controls:TextBoxHelper.ClearTextButton="True" HorizontalAlignment="Left" Height="28" Margin="209,104,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="112" FontSize="16"/>
+        <Label x:Name="lblTipoemp" Content="Tipo Empresa*" HorizontalAlignment="Left" Margin="353,100,0,0" VerticalAlignment="Top" FontSize="18" RenderTransformOrigin="0.231,0.123"/>
+        <Label x:Name="lblActividad" Content="Actividad*" HorizontalAlignment="Left" Margin="672,100,0,0" VerticalAlignment="Top" FontSize="18" RenderTransformOrigin="0.231,0.123"/>
+        <ComboBox x:Name="cboTipoemp" HorizontalAlignment="Left" Margin="480,104,0,0" VerticalAlignment="Top" Width="170" FontSize="16" Controls:TextBoxHelper.Watermark="Seleccione" HorizontalContentAlignment="Center"/>
+        <ComboBox x:Name="cboActividad" HorizontalAlignment="Left" Margin="765,104,0,0" VerticalAlignment="Top" Width="132" FontSize="16" SelectionChanged="cboActividad_SelectionChanged" Controls:TextBoxHelper.Watermark="Seleccione" HorizontalContentAlignment="Center"/>
+
+        <!--datagrid-->
+        <Border x:Name="brDark" BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="297" Margin="20,197,0,0" VerticalAlignment="Top" Width="994" Background="#FF2B78E4" Visibility="Collapsed"/>
+        <DataGrid x:Name="dtgClientes" HorizontalAlignment="Left" Height="270" Margin="33,209,0,0" VerticalAlignment="Top" Width="967" ScrollViewer.CanContentScroll="false" AutoGenerateColumns="False" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" GridLinesVisibility="None" HorizontalGridLinesBrush="White" VerticalGridLinesBrush="White" SelectedItem="{Binding Path=RutCliente}" >
+            <DataGrid.Columns>
+                <DataGridTextColumn x:Name="Rut" Binding="{Binding Path=RutCliente}" Header="       Rut" Width="90"/>
+                <DataGridTextColumn Binding="{Binding Path=RazonSocial}" Header="    Razón Social" Width="135"/>
+                <DataGridTextColumn Binding="{Binding Path=NombreContacto}"  Header="Nombre Contacto" Width="145"/>
+                <DataGridTextColumn Binding="{Binding Path=MailContacto}"  Header="Mail de Contacto"/>
+                <DataGridTextColumn Binding="{Binding Path=Direccion}" Header="           Dirección" Width="170"/>
+                <DataGridTextColumn Binding="{Binding Path=Telefono}"  Header="Teléfono"/>
+                <DataGridTextColumn Binding="{Binding Path=DescripEmpresa}" Header="Tipo Empresa" IsReadOnly="True"/>
+                <DataGridTextColumn Binding="{Binding Path=DescripActividad}"  Header="   Actividad" Width="111" IsReadOnly="True" SortDirection="Ascending"/>
+            </DataGrid.Columns>
+        </DataGrid>
+        <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="272" Margin="32,208,0,0" VerticalAlignment="Top" Width="969" RenderTransformOrigin="0.5,0.5">
+        </Border>
+
+        <!--Boton menu Principal-->
+        <Controls:Tile x:Name="btnMenu" Margin="15,0,0,15" Height="55" VerticalContentAlignment="Top" VerticalAlignment="Bottom" HorizontalAlignment="Left" HorizontalContentAlignment="Left" Title="Menú&#xA;Principal" TitleFontSize="15" VerticalTitleAlignment="Center" HorizontalTitleAlignment="Right" Width="115" Background="#FF38761D" Click="btnMenu_Click">
+            <Image Source="/Imagenes/Back.png" />
+        </Controls:Tile>
+        <!--Ventana Anterior-->
+        <Controls:Tile x:Name="btnBack" Margin="15,0,0,15" Height="55" VerticalContentAlignment="Top" VerticalAlignment="Bottom" HorizontalAlignment="Left" HorizontalContentAlignment="Left" Title="Ventana&#xA;Anterior" TitleFontSize="15" VerticalTitleAlignment="Center" HorizontalTitleAlignment="Right" Width="115" Background="#FF38761D" Click="btnBack_Click" Visibility="Collapsed">
+            <Image Source="/Imagenes/Back.png" />
+        </Controls:Tile>
+
+
+        <!--Seleccionar Cliente-->
+        <Controls:Tile x:Name="btnSelect" Margin="664,502,238,89" Height="Auto" VerticalContentAlignment="Center" HorizontalContentAlignment="Left" TitleFontSize="15" Title="Seleccionar&#xA;Cliente" HorizontalTitleAlignment="Right" VerticalTitleAlignment="Center" Width="Auto" Background="#FF085394" RenderTransformOrigin="1.262,0.273" Visibility="Collapsed" Click="btnSelect_Click">
+            <Image Source="/Imagenes/Select_row.png" />
+        </Controls:Tile>
+
+        <Image Source="Imagenes/logo_transparent_background.png" Width="152" Height="152" Margin="880,494,0,0"/>
+        <Button x:Name="btnLimpiar" Content="Limpiar Controles" Margin="613,158,285,458" Style="{DynamicResource SquareButtonStyle}" Click="btnLimpiar_Click" />
+        <Button x:Name="btnBuscar" Content="buscar" Margin="444,156,517,456" Style="{DynamicResource SquareButtonStyle}" FontSize="16" Click="btnBuscar_Click" />
+        <Controls:ToggleSwitch x:Name="swDarkTheme"  OnLabel=" " OffLabel="" Margin="940,-16,0,601" FontSize="24" Content="" VerticalContentAlignment="Bottom" Header="" Width="72" VerticalAlignment="Bottom" HorizontalAlignment="Left" Height="61" ContentDirection="RightToLeft" OnSwitchBrush="#FF085394"   Checked="swDarkTheme_Checked" IsCheckedChanged="swDarkTheme_IsCheckedChanged" />
+        <Label x:Name="lblSwitch" Content=" Switch&#xA;Off | On" HorizontalAlignment="Left" Margin="940,37,0,0" VerticalAlignment="Top" FontSize="18" Width="72"/>
+    </Grid>
+</Controls:MetroWindow>

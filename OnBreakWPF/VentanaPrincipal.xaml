@@ -1,0 +1,65 @@
+﻿<Controls:MetroWindow x:Class="OnBreakWPF.VentanaPrincipal"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:OnBreakWPF"
+        xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+        xmlns:behaviours="clr-namespace:MahApps.Metro.Behaviours;assembly=MahApps.Metro"
+        xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+        WindowStartupLocation="CenterScreen"
+
+              
+        mc:Ignorable="d"
+        Title="VentanaPrincipal" Height="541" Width="927">
+    <Grid>
+
+        <!--Botones-->
+        <Controls:Tile x:Name="btnAdmincli" Margin="169,0,498,184" Width="252" Height="67" Background="#FF085394" VerticalContentAlignment="Center" HorizontalContentAlignment="Left" Title="Administración de Clientes" HorizontalAlignment="Center" HorizontalTitleAlignment="Right" VerticalAlignment="Bottom" VerticalTitleAlignment="Center" CountFontSize="26" TitleFontSize="15" Click="btnAdmincli_Click">
+            <Image Source="/Imagenes/User-Profile.png" />
+        </Controls:Tile>
+        <Controls:Tile x:Name="btnAdmincont" Margin="498,0,169,183" Width="252" Height="67" Background="#FF085394" HorizontalContentAlignment="Left" Title="Administración de Contratos" HorizontalAlignment="Center" HorizontalTitleAlignment="Right" VerticalAlignment="Bottom" VerticalTitleAlignment="Center" CountFontSize="26" TitleFontSize="15" Click="btnAdmincont_Click">
+            <Image Source="/Imagenes/Contrato.png" />
+        </Controls:Tile>
+        <Controls:Tile x:Name="btnListarcli" Margin="170,0,497,64" Width="252" Height="67" Background="#FF085394" HorizontalContentAlignment="Left" Title="Listado de Clientes" HorizontalAlignment="Center" VerticalAlignment="Bottom" VerticalTitleAlignment="Center" CountFontSize="26" TitleFontSize="15" Click="btnListarcli_Click" HorizontalTitleAlignment="Center">
+            <Image Source="/Imagenes/Lista.png" />
+
+        </Controls:Tile>
+        <Controls:Tile x:Name="btnListarcont" Margin="498,0,169,64" Width="Auto" Height="67" Background="#FF085394" HorizontalContentAlignment="Left" TitleFontSize="15" Title="Listado de Contratos" VerticalContentAlignment="Center" VerticalTitleAlignment="Center" VerticalAlignment="Bottom" HorizontalTitleAlignment="Center" Click="btnListarcont_Click">
+            <Image Source="/Imagenes/Lista.png" />
+        </Controls:Tile>
+
+        <!--<Image x:Name="imgDark" Source="/Imagenes/logo_transparent_background.png" Width="200" Height="200" Margin="360,5,359,305" ContextMenuClosing="imgDark_ContextMenuClosing" Visibility="Hidden"/>-->
+        <Controls:Tile x:Name="btnImgDark" Margin="342,-18,364,287" Width="Auto" Height="Auto" Background="{x:Null}">
+            <Image x:Name="imgDark" Source="/Imagenes/logo_transparent_background.png" Width="200" Height="229" Visibility="Visible" RenderTransformOrigin="0.5,0.5">
+                <Image.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform/>
+                        <RotateTransform Angle="-0.328"/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </Image.RenderTransform>
+            </Image>
+        </Controls:Tile>
+        
+        <Controls:Tile x:Name="btnImgLight" Margin="342,-18,364,287" Width="Auto" Height="Auto" Background="{x:Null}">
+            <Image x:Name="imgLight" Source="/Imagenes/dark_logo_transparent_background.png" Width="200" Height="229" Visibility="Visible" RenderTransformOrigin="0.5,0.5">
+                <Image.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform/>
+                        <RotateTransform Angle="-0.328"/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </Image.RenderTransform>
+            </Image>
+        </Controls:Tile>
+        
+       
+
+        <Controls:ToggleSwitch x:Name="swDarkTheme"  OnLabel=" " OffLabel="" Margin="834,-16,0,465" FontSize="24" Content="" VerticalContentAlignment="Bottom" Header="" Width="72" VerticalAlignment="Bottom" HorizontalAlignment="Left" Height="61" ContentDirection="RightToLeft" OnSwitchBrush="#FF085394"   Checked="swDarkTheme_Checked" IsCheckedChanged="swDarkTheme_IsCheckedChanged" />
+        <Label x:Name="lblSwitch" Content=" Switch&#xA;Off | On" HorizontalAlignment="Left" Margin="834,37,0,0" VerticalAlignment="Top" FontSize="18" Width="72"/>
+
+    </Grid>
+</Controls:MetroWindow>
